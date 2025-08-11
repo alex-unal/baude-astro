@@ -147,6 +147,7 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', () => {
+  // --- ELEMENTOS DEL DOM ---
   const form = document.getElementById('contactForm') as HTMLFormElement;
   const nameInput = document.getElementById('name') as HTMLInputElement;
   const emailInput = document.getElementById('email') as HTMLInputElement;
@@ -154,160 +155,105 @@ document.addEventListener('DOMContentLoaded', () => {
   const submitBtn = document.getElementById('submitBtn') as HTMLButtonElement;
   const btnText = document.getElementById('btnText') as HTMLSpanElement;
   const loadingSpinner = document.getElementById('loadingSpinner') as HTMLElement;
+  
   const successMessage = document.getElementById('successMessage') as HTMLElement;
   const errorMessage = document.getElementById('errorMessage') as HTMLElement;
   const errorText = document.getElementById('errorText') as HTMLElement;
   const charCount = document.getElementById('charCount') as HTMLElement;
 
-  // Error elements
   const nameError = document.getElementById('nameError') as HTMLElement;
   const emailError = document.getElementById('emailError') as HTMLElement;
   const messageError = document.getElementById('messageError') as HTMLElement;
 
-  // Character counter for message
+  // --- FUNCIONES DE VALIDACIÓN ---
+  const validateName = () => {
+    const isValid = nameInput.value.trim().length >= 2 && nameInput.value.trim().length <= 50;
+    nameError.classList.toggle('hidden', isValid);
+    nameInput.classList.toggle('border-red-500', !isValid);
+    return isValid;
+  };
+
+  const validateEmail = () => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const isValid = emailRegex.test(emailInput.value);
+    emailError.classList.toggle('hidden', isValid);
+    emailInput.classList.toggle('border-red-500', !isValid);
+    return isValid;
+  };
+
+  const validateMessage = () => {
+    const isValid = messageInput.value.trim().length >= 10 && messageInput.value.trim().length <= 500;
+    messageError.classList.toggle('hidden', isValid);
+    messageInput.classList.toggle('border-red-500', !isValid);
+    return isValid;
+  };
+
+  // Asignar validación en tiempo real
+  nameInput.addEventListener('input', validateName);
+  emailInput.addEventListener('input', validateEmail);
+  messageInput.addEventListener('input', validateMessage);
+
+  // --- CONTADOR DE CARACTERES ---
   messageInput.addEventListener('input', () => {
     const count = messageInput.value.length;
     charCount.textContent = `${count}/500`;
-    
-    if (count > 500) {
-      charCount.classList.add('text-red-500');
-      charCount.classList.remove('text-apple-gray-400');
-    } else {
-      charCount.classList.remove('text-red-500');
-      charCount.classList.add('text-apple-gray-400');
-    }
+    charCount.classList.toggle('text-red-500', count > 500);
   });
 
-  // Validation functions
-  const validateName = (name: string): boolean => {
-    return name.trim().length >= 2 && name.trim().length <= 50;
-  };
-
-  const validateEmail = (email: string): boolean => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
-  };
-
-  const validateMessage = (message: string): boolean => {
-    return message.trim().length >= 10 && message.trim().length <= 500;
-  };
-
-  // Real-time validation
-  nameInput.addEventListener('blur', () => {
-    if (!validateName(nameInput.value)) {
-      nameInput.classList.add('border-red-500', 'focus:border-red-500');
-      nameError.classList.remove('hidden');
-    } else {
-      nameInput.classList.remove('border-red-500', 'focus:border-red-500');
-      nameError.classList.add('hidden');
-    }
-  });
-
-  emailInput.addEventListener('blur', () => {
-    if (!validateEmail(emailInput.value)) {
-      emailInput.classList.add('border-red-500', 'focus:border-red-500');
-      emailError.classList.remove('hidden');
-    } else {
-      emailInput.classList.remove('border-red-500', 'focus:border-red-500');
-      emailError.classList.add('hidden');
-    }
-  });
-
-  messageInput.addEventListener('blur', () => {
-    if (!validateMessage(messageInput.value)) {
-      messageInput.classList.add('border-red-500', 'focus:border-red-500');
-      messageError.classList.remove('hidden');
-    } else {
-      messageInput.classList.remove('border-red-500', 'focus:border-red-500');
-      messageError.classList.add('hidden');
-    }
-  });
-
-  // Form submission
+  // --- ENVÍO DEL FORMULARIO CON AJAX (FETCH) ---
   form.addEventListener('submit', async (e) => {
-    e.preventDefault();
+    e.preventDefault(); // Prevenir el envío tradicional
     
-    // Hide previous messages
+    // Ocultar mensajes previos
     successMessage.classList.add('hidden');
     errorMessage.classList.add('hidden');
 
-    // Validate all fields
-    const name = nameInput.value.trim();
-    const email = emailInput.value.trim();
-    const message = messageInput.value.trim();
+    // Validar todos los campos antes de enviar
+    const isNameValid = validateName();
+    const isEmailValid = validateEmail();
+    const isMessageValid = validateMessage();
 
-    let isValid = true;
-
-    if (!validateName(name)) {
-      nameInput.classList.add('border-red-500');
-      nameError.classList.remove('hidden');
-      isValid = false;
-    }
-
-    if (!validateEmail(email)) {
-      emailInput.classList.add('border-red-500');
-      emailError.classList.remove('hidden');
-      isValid = false;
-    }
-
-    if (!validateMessage(message)) {
-      messageInput.classList.add('border-red-500');
-      messageError.classList.remove('hidden');
-      isValid = false;
-    }
-
-    if (!isValid) {
-      errorText.textContent = 'Por favor corrige los errores en el formulario.';
+    if (!isNameValid || !isEmailValid || !isMessageValid) {
+      errorText.textContent = 'Por favor corrige los errores marcados.';
       errorMessage.classList.remove('hidden');
       return;
     }
 
-    // Show loading state
+    // Mostrar estado de carga
     submitBtn.disabled = true;
     btnText.classList.add('hidden');
     loadingSpinner.classList.remove('hidden');
 
     try {
-      // Simulate form submission (replace with actual endpoint)
-      const formData = new FormData();
-      formData.append('name', name);
-      formData.append('email', email);
-      formData.append('message', message);
-
-      // For demo purposes, we'll simulate a delay
-      await new Promise(resolve => setTimeout(resolve, 2000));
-
-      // Uncomment and modify this section for actual form submission:
-      /*
-      const response = await fetch('/api/contact', {
+      const formData = new FormData(form);
+      const response = await fetch('/send_email.php', {
         method: 'POST',
         body: formData
       });
 
       if (!response.ok) {
-        throw new Error('Error en el servidor');
+        throw new Error('Error de red o del servidor.');
       }
-      */
 
-      // Show success message
-      successMessage.classList.remove('hidden');
-      form.reset();
-      charCount.textContent = '0/500';
-      
-      // Clear any validation errors
-      [nameInput, emailInput, messageInput].forEach(input => {
-        input.classList.remove('border-red-500', 'focus:border-red-500');
-      });
-      [nameError, emailError, messageError].forEach(error => {
-        error.classList.add('hidden');
-      });
+      const result = await response.json();
 
+      if (result.status === 'success') {
+        successMessage.classList.remove('hidden');
+        form.reset();
+        // Resetear estilos de validación y contador
+        [nameInput, emailInput, messageInput].forEach(input => input.classList.remove('border-red-500'));
+        [nameError, emailError, messageError].forEach(error => error.classList.add('hidden'));
+        charCount.textContent = '0/500';
+        charCount.classList.remove('text-red-500');
+      } else {
+        throw new Error(result.message || 'Ocurrió un error en el servidor.');
+      }
     } catch (error) {
-      console.error('Error sending message:', error);
-      errorText.textContent = 'Ha ocurrido un error al enviar el mensaje. Por favor, inténtalo de nuevo o contacta directamente por email.';
+      const message = error instanceof Error ? error.message : 'No se pudo enviar el mensaje. Inténtalo de nuevo.';
+      errorText.textContent = message;
       errorMessage.classList.remove('hidden');
     } finally {
-      // Reset button state
+      // Ocultar estado de carga y restaurar botón
       submitBtn.disabled = false;
       btnText.classList.remove('hidden');
       loadingSpinner.classList.add('hidden');
