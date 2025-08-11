@@ -6,11 +6,14 @@ interface Skill {
 }
 
 const skills: Skill[] = [
-  { name: 'JavaScript', level: 'Expert', icon: '⚡' },
-  { name: 'TypeScript', level: 'Expert', icon: '📘' },
-  { name: 'React', level: 'Expert', icon: '⚛️' },
-  { name: 'Node.js', level: 'Advanced', icon: '🟢' },
-  { name: 'Python', level: 'Advanced', icon: '🐍' },
+  { name: 'Diseño Instruccional', level: 'Expert', icon: '🎓' },
+  { name: 'Ambientes Virtuales de Aprendizaje', level: 'Expert', icon: '💻' },
+  { name: 'Corrección de Estilo', level: 'Expert', icon: '✍️' },
+  { name: 'Lingüística', level: 'Expert', icon: '🗣️' },
+  { name: 'Neurociencia Cognitiva', level: 'Advanced', icon: '🧠' },
+  { name: 'Pedagogía Digital', level: 'Advanced', icon: '�' },
+  { name: 'Gestión de Contenidos', level: 'Advanced', icon: '�' },
+  { name: 'Inglés', level: 'Expert', icon: '🌍' },
 ];
 
 const levelColors = {
@@ -21,7 +24,7 @@ const levelColors = {
 ---
 
 <div class="bg-white/80 backdrop-blur-lg rounded-3xl p-6 shadow-xl">
-  <h3 class="text-2xl font-semibold mb-4">Skills</h3>
+  <h3 class="text-2xl font-semibold mb-4">Habilidades</h3>
   <div class="space-y-4">
     {skills.map((skill) => (
       <div class="flex items-center justify-between p-3 hover:bg-apple-gray-50 rounded-xl transition-colors">

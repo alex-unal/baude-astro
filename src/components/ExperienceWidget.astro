@@ -16,47 +16,87 @@ interface Education {
 
 const experiences: Experience[] = [
   {
-    title: "Senior Software Engineer",
-    company: "Tech Solutions Inc.",
-    period: "2021 - Present",
+    title: "Diseñador Instruccional",
+    company: "Universidad Uniminuto",
+    period: "2025 - Presente (4 meses)",
     description: [
-      "Led development of cloud-native applications using microservices architecture",
-      "Mentored junior developers and conducted code reviews",
-      "Improved system performance by 40% through optimization"
+      "Diseño de contenido para ambientes virtuales de aprendizaje en el marco del proyecto DIEPO",
+      "Elaboración de guiones instruccionales"
     ],
-    technologies: ["React", "Node.js", "AWS", "Docker"]
+    technologies: ["E-Learning", "Diseño Instruccional", "AVA"]
   },
   {
-    title: "Software Developer",
-    company: "Digital Innovations",
-    period: "2019 - 2021",
+    title: "Diseñador Instruccional",
+    company: "Universidad del Rosario",
+    period: "2023 - 2024 (14 meses)",
     description: [
-      "Developed full-stack web applications for enterprise clients",
-      "Implemented CI/CD pipelines reducing deployment time by 60%"
+      "Adecuación de contenido para ambientes virtuales de aprendizaje",
+      "Elaboración de guiones para el desarrollo de OVA (Objetos Virtuales de Aprendizaje)"
     ],
-    technologies: ["Vue.js", "Python", "PostgreSQL"]
+    technologies: ["OVA", "AVA", "Pedagogía Digital"]
+  },
+  {
+    title: "Coordinador E-learning y Diseñador Instruccional",
+    company: "Distribuna Editorial",
+    period: "2015 - 2023 (8 años)",
+    description: [
+      "Desarrollo de propuestas pedagógicas para proyectos de educación médica continuada",
+      "Dirección de equipo de diseño",
+      "Gestión de proyectos educativos virtuales"
+    ],
+    technologies: ["Educación Médica", "Gestión de Equipos", "Pedagogía"]
+  },
+  {
+    title: "Adecuador Pedagógico y Gestor",
+    company: "Escuela Superior de Administración Pública (ESAP)",
+    period: "2014 (1 año)",
+    description: [
+      "Adecuación de contenido para ambientes virtuales de aprendizaje",
+      "Acompañamiento a expertos temáticos en el desarrollo de contenido"
+    ],
+    technologies: ["Gestión Pedagógica", "Acompañamiento Académico"]
+  },
+  {
+    title: "Adecuador Pedagógico",
+    company: "Departamento Administrativo Nacional de Estadística (DANE)",
+    period: "2013 (1 año)",
+    description: [
+      "Elaboración de guiones para la producción de contenido virtual y objetos virtuales de aprendizaje",
+      "Organización pedagógica y corrección de estilo de contenidos",
+      "Aplicación de normas de la Real Academia de la Lengua"
+    ],
+    technologies: ["Corrección de Estilo", "Producción de Contenidos"]
   }
 ];
 
 const education: Education[] = [
   {
-    degree: "Master of Science in Computer Science",
-    school: "Tech University",
-    period: "2017 - 2019",
+    degree: "Máster en Neurociencia Cognitiva y Necesidades Educativas Específicas",
+    school: "Universidad de La Laguna (España)",
+    period: "Posgrado",
     achievements: [
-      "Specialized in Machine Learning and AI",
-      "Published research paper on Neural Networks",
-      "GPA: 3.9/4.0"
+      "Especialización en neurociencia aplicada a la educación",
+      "Enfoque en necesidades educativas específicas",
+      "Formación internacional"
     ]
   },
   {
-    degree: "Bachelor of Science in Software Engineering",
-    school: "State University",
-    period: "2013 - 2017",
+    degree: "Lingüística",
+    school: "Universidad Nacional de Colombia",
+    period: "Pregrado",
     achievements: [
-      "Dean's List all semesters",
-      "Led Programming Club",
-      "Completed honors thesis on distributed systems"
+      "Dominio de competencias comunicativas",
+      "Curso: Comprensión y producción de Textos (60 horas)",
+      "Taller: Taller de Oralidad y Escritura (60 horas)"
+    ]
+  },
+  {
+    degree: "Bachillerato",
+    school: "Colegio Nacional San Juan Bautista De la Salle - Zipaquirá",
+    period: "1995 - 2000",
+    achievements: [
+      "Formación académica secundaria completa",
+      "Base sólida para estudios universitarios"
     ]
   }
 ];
@@ -64,7 +104,7 @@ const education: Education[] = [
 
 <div class="space-y-8">
   <div class="bg-white/80 backdrop-blur-lg rounded-3xl p-6 shadow-xl">
-    <h3 class="text-2xl font-semibold mb-6">Work Experience</h3>
+    <h3 class="text-2xl font-semibold mb-6">Experiencia Laboral</h3>
     <div class="space-y-6">
       {experiences.map((exp) => (
         <div class="border-l-2 border-blue-500 pl-4 pb-6">
@@ -95,7 +135,7 @@ const education: Education[] = [
   </div>
 
   <div class="bg-white/80 backdrop-blur-lg rounded-3xl p-6 shadow-xl">
-    <h3 class="text-2xl font-semibold mb-6">Education</h3>
+    <h3 class="text-2xl font-semibold mb-6">Formación Académica</h3>
     <div class="space-y-6">
       {education.map((edu) => (
         <div class="border-l-2 border-blue-500 pl-4 pb-6">

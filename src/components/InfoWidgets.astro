@@ -2,9 +2,9 @@
 import { Image } from 'astro:assets'
 
 const socialLinks = [
-  { name: 'GitHub', url: 'https://github.com', icon: 'github' },
-  { name: 'LinkedIn', url: 'https://linkedin.com', icon: 'linkedin' },
-  { name: 'Twitter', url: 'https://twitter.com', icon: 'twitter' },
+  { name: 'Email', url: 'mailto:alex.baudelino@gmail.com', icon: 'email' },
+  { name: 'LinkedIn', url: 'https://linkedin.com/in/baudelino', icon: 'linkedin' },
+  { name: 'CV', url: '/CV.pdf', icon: 'cv' },
 ]
 
 // Get current time in different formats
@@ -29,8 +29,8 @@ const timeString = now.toLocaleTimeString('en-US', {
         </svg>
       </div>
       <div>
-        <p class="text-sm text-apple-gray-400">Location</p>
-        <p class="font-medium">San Francisco, CA</p>
+        <p class="text-sm text-apple-gray-400">Ubicación</p>
+        <p class="font-medium">Colombia</p>
       </div>
     </div>
   </div>
@@ -47,8 +47,8 @@ const timeString = now.toLocaleTimeString('en-US', {
         </svg>
       </div>
       <div>
-        <p class="text-sm text-apple-gray-400">Local Time</p>
-        <p class="font-medium">PST • {timeString}</p>
+        <p class="text-sm text-apple-gray-400">Hora Local</p>
+        <p class="font-medium">COL • {timeString}</p>
       </div>
     </div>
   </div>
@@ -60,8 +60,8 @@ const timeString = now.toLocaleTimeString('en-US', {
         <div class="w-3 h-3 bg-green-500 rounded-full"></div>
       </div>
       <div>
-        <p class="text-sm text-apple-gray-400">Availability</p>
-        <p class="font-medium">Available for hire</p>
+        <p class="text-sm text-apple-gray-400">Disponibilidad</p>
+        <p class="font-medium">Disponible para proyectos</p>
       </div>
     </div>
   </div>
@@ -81,19 +81,16 @@ const timeString = now.toLocaleTimeString('en-US', {
         </svg>
       </div>
       <div class="flex-col gap-2">
-        <p class="text-sm text-apple-gray-400">Social Media</p>
+        <p class="text-sm text-apple-gray-400">Enlaces</p>
         <div class="flex gap-2 font-medium">
           {
             socialLinks.map((link) => (
               <a href={link.url} target="_blank" rel="noopener noreferrer" class="text-apple-gray-400 hover:text-apple-gray-500 transition-colors">
                 <span class="sr-only">{link.name}</span>
-                {link.icon === 'github' && (
+                {link.icon === 'email' && (
                   <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                    <path
-                      fill-rule="evenodd"
-                      d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
-                      clip-rule="evenodd"
-                    />
+                    <path d="M1.5 8.67v8.58a3 3 0 003 3h15a3 3 0 003-3V8.67l-8.928 5.493a3 3 0 01-3.144 0L1.5 8.67z" />
+                    <path d="M22.5 6.908V6.75a3 3 0 00-3-3h-15a3 3 0 00-3 3v.158l9.714 5.978a1.5 1.5 0 001.572 0L22.5 6.908z" />
                   </svg>
                 )}
                 {link.icon === 'linkedin' && (
@@ -105,9 +102,10 @@ const timeString = now.toLocaleTimeString('en-US', {
                     />
                   </svg>
                 )}
-                {link.icon === 'twitter' && (
+                {link.icon === 'cv' && (
                   <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" />
+                    <path fill-rule="evenodd" d="M5.625 1.5c-1.036 0-1.875.84-1.875 1.875v17.25c0 1.035.84 1.875 1.875 1.875h12.75c1.035 0 1.875-.84 1.875-1.875V12.75A3.75 3.75 0 0016.5 9h-1.875a1.875 1.875 0 01-1.875-1.875V5.25A3.75 3.75 0 009 1.5H5.625z" clip-rule="evenodd" />
+                    <path fill-rule="evenodd" d="M12.971 1.816A5.23 5.23 0 0114.25 5.25v1.875c0 .207.168.375.375.375H16.5a5.23 5.23 0 013.434 1.279 9.768 9.768 0 00-6.963-6.963z" clip-rule="evenodd" />
                   </svg>
                 )}
               </a>

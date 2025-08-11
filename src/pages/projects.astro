@@ -7,7 +7,7 @@ import { projects } from '../data/project'
 const allTags = [...new Set(projects.flatMap((project) => project.tags))].sort()
 ---
 
-<Layout title="Projects | Modern Developer Portfolio">
+<Layout title="Proyectos | Alex Baudelino García">
   <main class="min-h-screen py-20 px-4">
     <div class="container mx-auto max-w-6xl">
       <!-- Header -->
@@ -17,10 +17,10 @@ const allTags = [...new Set(projects.flatMap((project) => project.tags))].sort()
             <path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd"
             ></path>
           </svg>
-          Back to Home
+          Volver al Inicio
         </a>
-        <h1 class="text-4xl font-bold text-blue-900 mb-4">My Projects</h1>
-        <p class="text-blue-600 max-w-2xl mx-auto">Explore my latest projects and experiments. Each project represents a unique challenge and solution.</p>
+        <h1 class="text-4xl font-bold text-blue-900 mb-4">Mis proyectos</h1>
+        <p class="text-blue-600 max-w-2xl mx-auto">Explora mis proyectos y experiencias en diseño instruccional. Cada proyecto representa un desafío único en educación virtual.</p>
       </div>
 
       <!-- Search and Filter Section -->
@@ -32,16 +32,16 @@ const allTags = [...new Set(projects.flatMap((project) => project.tags))].sort()
               <input
                 type="text"
                 id="search"
-                placeholder="Search projects..."
+                placeholder="Buscar proyectos..."
                 class="w-full px-4 py-2 rounded-xl bg-white border border-blue-100 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-colors"
               />
             </div>
-            <button id="resetFilters" class="px-4 py-2 text-blue-600 border border-blue-100 rounded-xl hover:bg-blue-50 transition-colors"> Reset Filters </button>
+            <button id="resetFilters" class="px-4 py-2 text-blue-600 border border-blue-100 rounded-xl hover:bg-blue-50 transition-colors"> Limpiar Filtros </button>
           </div>
 
           <!-- Tags Filter -->
           <div class="flex-1">
-            <p class="text-sm text-blue-600 mb-2">Filter by tags:</p>
+            <p class="text-sm text-blue-600 mb-2">Filtrar por etiquetas:</p>
             <div class="flex flex-wrap gap-2">
               {
                 allTags.map((tag) => (

@@ -2,14 +2,14 @@
 import { projects } from '../data/project';
 import type { Project } from '../types/project';
 
-const featuredProjects: Project[] = projects;
+const featuredProjects: Project[] = projects.filter(project => project.featured);
 ---
 
 <div class="bg-white/80 backdrop-blur-lg rounded-3xl p-6 shadow-xl">
   <div class="md:flex justify-between items-center mb-6">
-    <h3 class="text-2xl font-semibold text-blue-900">Featured Projects</h3>
+    <h3 class="text-2xl font-semibold text-blue-900">Proyectos Destacados</h3>
     <a href="/projects" class="text-blue-600 hover:text-blue-800 transition-colors text-sm">
-      View all projects →
+      Ver más proyectos →
     </a>
   </div>
   <div class="grid gap-6">

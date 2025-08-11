@@ -9,24 +9,24 @@ interface Testimonial {
 
 const testimonials: Testimonial[] = [
   {
-    content: "John is an exceptional developer who consistently delivers high-quality work. His attention to detail and problem-solving skills are outstanding.",
-    author: "Sarah Johnson",
-    role: "CTO",
-    company: "TechCorp",
+    content: "Alex demostró una capacidad excepcional para transformar contenidos complejos en experiencias de aprendizaje claras y efectivas. Su enfoque pedagógico es sobresaliente.",
+    author: "Gloria Elisa Amézquita",
+    role: "Coordinadora Académica",
+    company: "Universidad del Rosario",
     avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&auto=format&fit=crop&q=80"
   },
   {
-    content: "Working with John was a pleasure. He not only delivered the project on time but also provided valuable insights that improved our overall architecture.",
-    author: "Michael Chen",
-    role: "Engineering Manager",
-    company: "InnovateLabs",
+    content: "La expertise de Alex en diseño instruccional y su dominio de la lingüística hicieron que nuestros proyectos de educación virtual alcanzaran estándares de calidad excepcionales.",
+    author: "Alejandro Gómez",
+    role: "Director de Proyecto",
+    company: "Universidad Uniminuto",
     avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&auto=format&fit=crop&q=80"
   }
 ];
 ---
 
 <div class="bg-white/80 backdrop-blur-lg rounded-3xl p-6 shadow-xl">
-  <h3 class="text-2xl font-semibold text-blue-900 mb-6">What People Say</h3>
+  <h3 class="text-2xl font-semibold text-blue-900 mb-6">Lo que Dicen de Mí</h3>
   <div class="grid md:grid-cols-2 gap-6">
     {testimonials.map((testimonial) => (
       <div class="bg-gradient-to-br from-blue-50 to-white p-6 rounded-2xl">

@@ -1,0 +1,159 @@
+---
+import Layout from '../layouts/Layout.astro';
+import BlogEntry from '../components/BlogEntry.astro';
+
+// Blog posts data - in a real app this would come from a CMS or file system
+const blogPosts = [
+  {
+    title: "Tendencias en Diseño Instruccional Digital",
+    excerpt: "Reflexión profesional sobre las tendencias que realmente importan en el diseño instruccional digital, más allá de la moda tecnológica. Del contenido centrado en el experto a la arquitectura de experiencias que transforman genuinamente el aprendizaje.",
+    date: "2024-02-15",
+    readTime: "5 min",
+    category: "Educación Virtual",
+    author: "Alex Baudelino García",
+    image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=600&h=300&fit=crop",
+    slug: "tendencias-en-diseno-instruccional-digital",
+    featured: true
+  },
+  {
+    title: "Neurociencia Aplicada a la Educación",
+    excerpt: "Reflexión crítica sobre el uso responsable de hallazgos neurocientíficos en el diseño instruccional. Más allá de los neuromitos: cómo integrar evidencia neurocognitiva de manera ética y metodológicamente sana en la formación virtual.",
+    date: "2024-02-10",
+    readTime: "4 min",
+    category: "Neurociencia",
+    author: "Alex Baudelino García",
+    image: "https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=600&h=300&fit=crop",
+    slug: "neurociencia-aplicada-a-la-educacion",
+    featured: false
+  }
+];
+
+// Get unique categories for filtering
+const categories = [...new Set(blogPosts.map(post => post.category))];
+---
+
+<Layout title="Blog | Alex Baudelino García" description="Reflexiones y artículos sobre diseño instruccional, neurociencia educativa y tendencias en e-learning">
+  <main class="min-h-screen py-20 px-4">
+    <div class="container mx-auto max-w-6xl">
+      <!-- Header -->
+      <div class="text-center mb-12">
+        <a href="/" class="inline-flex items-center text-blue-600 hover:text-blue-800 mb-4">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M9.707 16.707a1 1 0 01-1.414 0l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 1.414L5.414 9H17a1 1 0 110 2H5.414l4.293 4.293a1 1 0 010 1.414z" clip-rule="evenodd"></path>
+          </svg>
+          Volver al Inicio
+        </a>
+        <h1 class="text-4xl font-bold text-blue-900 mb-4">Blog</h1>
+        <p class="text-blue-600 max-w-2xl mx-auto">
+          Reflexiones sobre diseño instruccional, neurociencia educativa y las tendencias que realmente transforman el aprendizaje digital.
+        </p>
+      </div>
+
+      <!-- Categories Filter -->
+      <div class="bg-white/80 backdrop-blur-lg rounded-3xl p-6 shadow-xl mb-8">
+        <div class="flex flex-col gap-4">
+          <h3 class="text-lg font-medium text-blue-900">Filtrar por categoría</h3>
+          <div class="flex flex-wrap gap-2">
+            <button 
+              class="category-filter active px-4 py-2 rounded-full border border-blue-200 text-sm hover:bg-blue-50 transition-colors"
+              data-category="all"
+            >
+              Todos los artículos
+            </button>
+            {categories.map((category) => (
+              <button 
+                class="category-filter px-4 py-2 rounded-full border border-blue-200 text-sm hover:bg-blue-50 transition-colors"
+                data-category={category}
+              >
+                {category}
+              </button>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <!-- Blog Posts Grid -->
+      <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3" id="blogGrid">
+        {blogPosts.map((post) => (
+          <div class="blog-post-wrapper" data-category={post.category}>
+            <BlogEntry
+              title={post.title}
+              excerpt={post.excerpt}
+              date={post.date}
+              readTime={post.readTime}
+              category={post.category}
+              author={post.author}
+              image={post.image}
+              slug={post.slug}
+              featured={post.featured}
+            />
+          </div>
+        ))}
+      </div>
+
+      <!-- Empty State -->
+      <div id="emptyState" class="hidden text-center py-12">
+        <div class="bg-white/80 backdrop-blur-lg rounded-3xl p-8 shadow-xl">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-blue-300 mx-auto mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.172 16.172a4 4 0 015.656 0M9 12h6m-6-4h6m2 5.291A7.962 7.962 0 0112 20c-2.22 0-4.24-.908-5.69-2.375"></path>
+          </svg>
+          <h3 class="text-xl font-medium text-blue-900 mb-2">No hay artículos en esta categoría</h3>
+          <p class="text-blue-600">Prueba con otra categoría o vuelve a ver todos los artículos.</p>
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const categoryButtons = document.querySelectorAll('.category-filter');
+    const blogPosts = document.querySelectorAll('.blog-post-wrapper');
+    const emptyState = document.getElementById('emptyState');
+
+    categoryButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const category = button.getAttribute('data-category');
+        
+        // Update active button
+        categoryButtons.forEach(btn => btn.classList.remove('active'));
+        button.classList.add('active');
+        
+        // Filter posts
+        let visibleCount = 0;
+        blogPosts.forEach(post => {
+          const postCategory = post.getAttribute('data-category');
+          
+          if (category === 'all' || postCategory === category) {
+            post.style.display = 'block';
+            visibleCount++;
+          } else {
+            post.style.display = 'none';
+          }
+        });
+        
+        // Show/hide empty state
+        if (visibleCount === 0) {
+          emptyState?.classList.remove('hidden');
+        } else {
+          emptyState?.classList.add('hidden');
+        }
+      });
+    });
+  });
+</script>
+
+<style>
+  .category-filter.active {
+    @apply bg-blue-600 text-white border-blue-600;
+  }
+  
+  .blog-post-wrapper {
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+  
+  .blog-post-wrapper:hover {
+    transform: translateY(-2px);
+  }
+</style>
+</Layout>
