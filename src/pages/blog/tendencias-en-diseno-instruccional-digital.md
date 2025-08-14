@@ -1,11 +1,11 @@
 ---
 layout: ../../layouts/BlogLayout.astro
-title: "Tendencias en Diseño Instruccional Digital"
+title: "Tendencias en Diseño Instruccional"
 date: 2024-02-15
 category: "Educación Virtual"
 author: "Alex Baudelino García"
 readTime: "5 min"
-slug: "tendencias-en-diseno-instruccional-digital"
+slug: "tendencias-en-diseno-instruccional"
 description: "Reflexión profesional sobre las tendencias que realmente importan en el diseño instruccional digital, más allá de la moda tecnológica."
 featured: true
 tags:
