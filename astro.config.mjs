@@ -4,6 +4,6 @@ import react from "@astrojs/react";
 
 export default defineConfig({
   integrations: [tailwind(), react()],
-  site: "https://alex-bta.github.io",
+  site: "https://alex-unal.github.io",
   base: "baude-astro",
 });
