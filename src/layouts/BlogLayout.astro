@@ -392,7 +392,7 @@ const formatDate = (dateString: string) => {
           const text = currentElement.textContent?.trim();
           if (text?.length > 20) {
             referenceTexts.push(text);
-            currentElement.style.display = 'none';
+            (currentElement as HTMLElement).style.display = 'none';
           }
         }
         currentElement = currentElement.nextElementSibling;

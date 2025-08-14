@@ -1,3 +1,5 @@
+
+text/x-generic send_email.php ( PHP script, UTF-8 Unicode text )
 <?php
 // Establecer la cabecera para devolver JSON
 header('Content-Type: application/json');
@@ -12,13 +14,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // --- CONFIGURACIÓN ---
     $recipient_email = "alex.baudelino@gmail.com"; 
     $sender_email = "alex@baudelino.com";
-    
+
     // --- PROCESAMIENTO ---
     
     // 1. Recoger y limpiar los datos del formulario
     $name = filter_var(trim($_POST["name"] ?? ''), FILTER_SANITIZE_STRING);
-    $subject = $name . " - quiere contactar";
     $email = filter_var(trim($_POST["email"] ?? ''), FILTER_SANITIZE_EMAIL);
+    $subject = $name . " - envía desde página personal";
     $message = filter_var(trim($_POST["message"] ?? ''), FILTER_SANITIZE_STRING);
 
     // 2. Validar los datos del lado del servidor
