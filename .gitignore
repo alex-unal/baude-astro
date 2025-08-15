@@ -24,4 +24,4 @@ pnpm-debug.log*
 .idea/
 
 # PHP script
-public/send_email.php
+# public/send_email.php
