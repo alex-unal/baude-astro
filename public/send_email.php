@@ -4,6 +4,11 @@ text/x-generic send_email.php ( PHP script, UTF-8 Unicode text )
 // Establecer la cabecera para devolver JSON
 header('Content-Type: application/json');
 
+// Agregar headers CORS
+header('Access-Control-Allow-Origin: https://baudelino.com');
+header('Access-Control-Allow-Methods: POST');
+header('Access-Control-Allow-Headers: Content-Type');
+
 // Función para devolver una respuesta JSON y terminar el script
 function json_response($status, $message = '') {
     echo json_encode(['status' => $status, 'message' => $message]);
