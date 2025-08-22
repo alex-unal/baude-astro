@@ -7,14 +7,19 @@ const socialLinks = [
   { name: 'CV', url: '/CV.pdf', icon: 'cv' },
 ]
 
-// Get current time in different formats
-const now = new Date()
-const timeString = now.toLocaleTimeString('en-US', {
-  hour: '2-digit',
-  minute: '2-digit',
-  hour12: true,
-})
 ---
+<script>
+  // Solo se ejecuta en el cliente
+  const el = document.getElementById('local-time');
+  if (el) {
+    const now = new Date();
+    el.textContent = now.toLocaleTimeString('es-CO', {
+      hour: '2-digit',
+      minute: '2-digit',
+      hour12: true,
+    });
+  }
+</script>
 
 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
   <!-- Location Widget -->
@@ -48,7 +53,7 @@ const timeString = now.toLocaleTimeString('en-US', {
       </div>
       <div>
         <p class="text-sm text-apple-gray-400">Hora Local</p>
-        <p class="font-medium">COL • {timeString}</p>
+        <p class="font-medium">COL • <span id="local-time"></span></p>
       </div>
     </div>
   </div>
