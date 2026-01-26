@@ -2,6 +2,18 @@ import type { Project } from "../types/project";
 
 export const projects: Project[] = [
   {
+    id: 6,
+    title: "Secretaría Distrital de Salud SDS",
+    description:
+      "Profesional especializado en pedagogía. Planteamiento pedagógico y seguimiento a los estándares educativos en plataforma de aprendizaje distrital Aprender Salud.",
+    image:
+      "https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&h=400&fit=crop",
+    tags: ["Diseño Instruccional", "E-Learning", "Pedagogía"],
+    demoUrl: "",
+    githubUrl: "",
+    featured: true,
+  },
+  {
     id: 1,
     title: "Proyecto DIEPO - Universidad Uniminuto",
     description:
@@ -35,7 +47,7 @@ export const projects: Project[] = [
     tags: ["Educación Médica", "Coordinación", "Equipos", "Innovación"],
     demoUrl: "",
     githubUrl: "",
-    featured: true,
+    featured: false,
   },
   {
     id: 4,
