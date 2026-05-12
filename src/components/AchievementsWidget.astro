@@ -29,13 +29,15 @@ const achievements: Achievement[] = [
 ];
 ---
 
-<div class="bg-gradient-to-r from-blue-600 to-blue-800 rounded-3xl p-8 shadow-xl text-white">
-  <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+<div class="relative overflow-hidden rounded-[2rem] bg-slate-950 p-8 text-white shadow-2xl shadow-slate-900/20">
+  <div class="absolute inset-y-0 right-0 w-1/2 bg-gradient-to-l from-blue-500/30 to-transparent"></div>
+  <div class="absolute -left-24 -top-24 h-56 w-56 rounded-full bg-blue-400/20 blur-3xl"></div>
+  <div class="relative grid grid-cols-2 md:grid-cols-4 gap-8">
     {achievements.map((achievement) => (
       <div class="text-center">
-        <span class="text-3xl mb-2 block">{achievement.icon}</span>
-        <p class="text-4xl font-bold mb-1">{achievement.number}</p>
-        <p class="text-blue-100 text-sm">{achievement.label}</p>
+        <span class="mb-3 block text-3xl">{achievement.icon}</span>
+        <p class="mb-1 text-4xl font-black tracking-[-0.04em]">{achievement.number}</p>
+        <p class="text-sm font-medium text-blue-100/85">{achievement.label}</p>
       </div>
     ))}
   </div>

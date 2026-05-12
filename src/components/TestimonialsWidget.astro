@@ -25,23 +25,24 @@ const testimonials: Testimonial[] = [
 ];
 ---
 
-<div class="bg-white/80 backdrop-blur-lg rounded-3xl p-6 shadow-xl">
-  <h3 class="text-2xl font-semibold text-blue-900 mb-6">Lo que Dicen de Mí</h3>
+<div class="glass-panel rounded-[2rem] p-6 md:p-8">
+  <p class="eyebrow mb-2">Referencias</p>
+  <h3 class="section-title text-3xl font-black mb-6">Lo que dicen de mí</h3>
   <div class="grid md:grid-cols-2 gap-6">
     {testimonials.map((testimonial) => (
-      <div class="bg-gradient-to-br from-blue-50 to-white p-6 rounded-2xl">
+      <div class="rounded-3xl border border-white/70 bg-gradient-to-br from-blue-50/90 to-white/70 p-6">
         <div class="flex gap-4 items-start">
           <img 
             src={testimonial.avatar} 
             alt={testimonial.author}
-            class="w-12 h-12 rounded-full object-cover"
+            class="w-14 h-14 rounded-2xl object-cover shadow-lg"
           />
           <div class="flex-1">
-            <p class="text-blue-600/90 mb-4">{testimonial.content}</p>
+            <p class="text-slate-700 mb-4 leading-7">“{testimonial.content}”</p>
             <div>
-              <p class="font-medium text-blue-900">{testimonial.author}</p>
-              <p class="text-sm text-blue-600">
-                {testimonial.role} at {testimonial.company}
+              <p class="font-bold text-blue-950">{testimonial.author}</p>
+              <p class="text-sm font-medium text-blue-700">
+                {testimonial.role} · {testimonial.company}
               </p>
             </div>
           </div>

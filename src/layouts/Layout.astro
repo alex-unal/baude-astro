@@ -23,15 +23,17 @@ const {
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
   </head>
-  <body class="bg-apple-gray-50 text-apple-gray-500">
+  <body class="bg-[#f4f0e8] text-slate-900 antialiased">
     <slot />
   </body>
 </html>
 
 <style is:global>
   :root {
-    --accent: rgb(0, 122, 255);
-    --accent-dark: rgb(0, 64, 221);
+    --accent: #175c9f;
+    --accent-dark: #0f315a;
+    --paper: #f4f0e8;
+    --ink: #101827;
   }
   
   html {
@@ -44,5 +46,48 @@ const {
     padding: 0;
     min-height: 100vh;
     overscroll-behavior: none;
+    background:
+      radial-gradient(circle at 16% 12%, rgba(51, 129, 190, 0.22), transparent 30rem),
+      radial-gradient(circle at 88% 6%, rgba(14, 50, 91, 0.14), transparent 24rem),
+      linear-gradient(135deg, #f8f4ec 0%, #edf4f8 44%, #f4f0e8 100%);
+    color: var(--ink);
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: -1;
+    opacity: 0.36;
+    background-image:
+      linear-gradient(rgba(15, 49, 90, 0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(15, 49, 90, 0.06) 1px, transparent 1px);
+    background-size: 48px 48px;
+    mask-image: linear-gradient(to bottom, black, transparent 78%);
+  }
+
+  ::selection {
+    background: rgba(23, 92, 159, 0.22);
+  }
+
+  .glass-panel {
+    border: 1px solid rgba(255, 255, 255, 0.72);
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.78), rgba(255, 255, 255, 0.52));
+    box-shadow: 0 24px 70px rgba(15, 49, 90, 0.12);
+    backdrop-filter: blur(22px);
+  }
+
+  .section-title {
+    color: #0f315a;
+    letter-spacing: -0.03em;
+  }
+
+  .eyebrow {
+    color: #175c9f;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
   }
 </style>

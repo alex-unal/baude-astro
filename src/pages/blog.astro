@@ -33,7 +33,7 @@ const categories = [...new Set(blogPosts.map(post => post.category))];
 ---
 
 <Layout title="Blog | Alex Baudelino García" description="Reflexiones y artículos sobre diseño instruccional, neurociencia educativa y tendencias en e-learning">
-  <main class="min-h-screen py-20 px-4 bg-gradient-to-br from-slate-50 to-blue-50">
+  <main class="min-h-screen py-20 px-4">
     <div class="container mx-auto max-w-6xl">
       <!-- Header mejorado -->
       <header class="mb-12">
@@ -51,11 +51,11 @@ const categories = [...new Set(blogPosts.map(post => post.category))];
         </nav>
 
         <!-- Título y descripción -->
-        <div class="bg-white/80 backdrop-blur-lg rounded-2xl p-8 md:p-12 shadow-xl border border-white/20 text-center">
+        <div class="glass-panel rounded-[2rem] p-8 md:p-12 text-center">
           <div class="max-w-4xl mx-auto">
             <!-- Badge de blog -->
             <div class="mb-6">
-              <span class="inline-flex items-center px-4 py-2 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-full text-sm font-medium shadow-lg">
+              <span class="inline-flex items-center px-4 py-2 bg-slate-950 text-white rounded-full text-sm font-bold shadow-lg">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" viewBox="0 0 20 20" fill="currentColor">
                   <path fill-rule="evenodd" d="M12.316 3.051a1 1 0 01.633 1.265l-4 12a1 1 0 11-1.898-.632l4-12a1 1 0 011.265-.633zM5.707 6.293a1 1 0 010 1.414L3.414 10l2.293 2.293a1 1 0 11-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0zm8.586 0a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 11-1.414-1.414L16.586 10l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd"/>
                 </svg>
@@ -64,15 +64,15 @@ const categories = [...new Set(blogPosts.map(post => post.category))];
             </div>
 
             <!-- Título principal -->
-            <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6 leading-tight">
+            <h1 class="text-5xl md:text-6xl font-black tracking-[-0.06em] text-slate-950 mb-6 leading-tight">
               Reflexiones sobre
-              <span class="bg-gradient-to-r from-blue-600 to-blue-700 bg-clip-text text-transparent">
+              <span class="block text-blue-800">
                 Diseño Instruccional
               </span>
             </h1>
 
             <!-- Descripción -->
-            <p class="text-xl text-gray-600 leading-relaxed mb-8 max-w-3xl mx-auto">
+            <p class="text-xl text-slate-600 leading-relaxed mb-8 max-w-3xl mx-auto">
               Exploro las tendencias, metodologías y evidencias que realmente transforman la educación digital. 
               Desde la neurociencia educativa hasta las mejores prácticas en e-learning.
             </p>
@@ -104,7 +104,7 @@ const categories = [...new Set(blogPosts.map(post => post.category))];
       </header>
 
       <!-- Filtro de categorías mejorado -->
-      <div class="bg-white/80 backdrop-blur-lg rounded-2xl p-6 shadow-xl border border-white/20 mb-8">
+      <div class="glass-panel rounded-[2rem] p-6 mb-8">
         <div class="flex flex-col gap-4">
           <div class="flex items-center gap-3">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-600" viewBox="0 0 20 20" fill="currentColor">
